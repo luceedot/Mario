@@ -49,7 +49,7 @@ public class MenuCard extends Pizza {
     public String toString()
     {
         return "Pizza " + pizzaNumber + ": " + pizzaName +
-                " (" + pizzaToppings + ", " + pizzaDefaultToppings + ") - " + pizzaPrice  + " DKK";
+                " (" + pizzaToppings + ", " + pizzaDefaultToppings + ") - " + pizzaPrice + " DKK";
     }
 
 
