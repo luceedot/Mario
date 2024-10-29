@@ -52,7 +52,7 @@ public class OrderLine {
                     setOrderStatus(OrderStatus.IN_PROGRESS);
                     System.out.println("Order is in progress.");
                 } else {
-                    setOrderStatus(OrderStatus.AWAITING_ORDER); // You may need to define this status
+                    setOrderStatus(OrderStatus.AWAITING_ORDER);
                 }
                 break;
 
