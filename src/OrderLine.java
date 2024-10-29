@@ -48,7 +48,12 @@ public class OrderLine {
     public void checkOrderStatus() {
         switch (orderStatus) {
             case IN_PROGRESS:
-                System.out.println("Order is in progress.");
+                if (!pizzasToMake.isEmpty() && !currentOrder.isEmpty()) {
+                    setOrderStatus(OrderStatus.IN_PROGRESS);
+                    System.out.println("Order is in progress.");
+                } else {
+                    setOrderStatus(OrderStatus.AWAITING_ORDER); // You may need to define this status
+                }
                 break;
             case READY:
                 System.out.println("Order is ready for pickup.");

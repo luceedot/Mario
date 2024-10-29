@@ -2,6 +2,7 @@ public enum OrderStatus {
 
     IN_PROGRESS,
     READY,
-    COLLECTED;
+    COLLECTED,
+    AWAITING_ORDER;
 
 }
