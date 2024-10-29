@@ -2,6 +2,9 @@ public class Pizza {
     /** Standardtoppings used for all pizzas **/
     protected String pizzaDefaultToppings;
 
+    public Pizza() {
+        this.pizzaDefaultToppings = "Standard toppings";
+    }
 
     /** Constructor that initializes pizzaDefaultToppings **/
     public Pizza(String defaultToppings) {
@@ -26,9 +29,7 @@ class MenuCard extends Pizza {
     /** Inner class that describes individual pizzas in the menu card **/
     public static class PizzaItem {
 
-        /**
-         * Attributes
-         **/
+        /** Attributes **/
         private String pizzaName;
         private int pizzaNumber;
         private double pizzaPrice;

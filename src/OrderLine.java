@@ -8,99 +8,87 @@ public class OrderLine {
     private LocalDateTime pickUpTime;   /** Example: 2024-10-30 14:30 **/
     private OrderStatus orderStatus;
 
+    ArrayList<Pizza> pizzasToMake = new ArrayList<>(); /** List for Mario of pizzas to make **/
+    ArrayList<Pizza> currentOrder = new ArrayList<>(); /** List of orders that Alfonso has received **/
 
-    ArrayList<Pizza> pizzasToMake = new ArrayList<>(); /** Liste for Mario af pizza som skal laves **/
-    ArrayList<Pizza> currentOrder = new ArrayList<>(); /** Liste af ordrer som Alfonso har taget imod **/
-
-
-    public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {  /** Constructor for Mario's array af pizza som skal laves **/
+    public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {
         this.name = name;
         this.pickUpTime = pickUpTime;
         this.orderStatus = orderStatus;
     }
 
-    public currentOrder(String name, LocalDateTime pickUpTime, OrderStatus orderStatus){  /** Constructor for Alsonso's array af ordrer som han har taget imod  **/
+    public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {
         this.name = name;
         this.pickUpTime = pickUpTime;
         this.orderStatus = orderStatus;
     }
 
-    public void addPizza(String pizzaName, String pizzaToppings){
+    public void addPizza(String pizzaName, String pizzaToppings) {
         Pizza newPizza = new Pizza(pizzaName, pizzaToppings);
-
         pizzasToMake.add(newPizza);
         currentOrder.add(newPizza);
-
-        orderStatus(OrderStatus.IN_PROGRESS);
+        setOrderStatus(OrderStatus.IN_PROGRESS);
     }
 
-    public void removePizza(){
+    public void removePizza() {
         Scanner input = new Scanner(System.in);
         System.out.println("Which pizza would you like to remove from the list? ");
         String inputRemove = input.nextLine();
 
         boolean pizzaFound = false;
-        for(int i = 0; i < pizzasToMake.size(); i++){
+        for (int i = 0; i < pizzasToMake.size(); i++) {
             Pizza randomPizza = pizzasToMake.get(i);
-            if(randomPizza.getName().equalsIgnoreCase(inputRemove)){
+            if (randomPizza.getName().equalsIgnoreCase(inputRemove)) {
                 pizzasToMake.remove(i);
                 currentOrder.remove(i);
                 System.out.println("Pizza removed: " + randomPizza.getName());
                 pizzaFound = true;
                 break;
             }
-
         }
-        if(!pizzaFound) {
+        if (!pizzaFound) {
             System.out.println("Pizza not found: " + inputRemove);
         }
-
     }
 
-    boolean pizzaFinished = false;
-    boolean orderInProgress = false;
-
-        while (!pizzaFinished) {
+    public void checkOrderStatus() {
         switch (orderStatus) {
             case IN_PROGRESS:
-
-                setOrderStatus(OrderStatus.IN_PROGRESS);
+                System.out.println("Order is in progress.");
+                break;
+            case READY:
+                System.out.println("Order is ready for pickup.");
+                break;
+            case COLLECTED:
+                System.out.println("Order has been collected.");
+                break;
+            default:
+                System.out.println("Awaiting an order.");
+                break;
         }
-        break;
+    }
 
-        case READY:
+    public String getName() {
+        return name;
+    }
 
-            break;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        case COLLECTED:
+    public LocalDateTime getPickUpTime() {
+        return pickUpTime;
+    }
 
-            break;
+    public void setPickUpTime(LocalDateTime pickUpTime) {
+        this.pickUpTime = pickUpTime;
+    }
 
-        default:
-            System.out.println("Awaiting an order");
-            break;  /
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }
-
-public String getName(){
-    return name;
-}
-public void setName(String name){
-    this.name = name;
-}
-
-public LocalDateTime getPickUpTime(){
-    return pickUpTime;
-}
-public void setPickUpTime(LocalDateTime pickUpTime){
-    this.pickUpTime = pickUpTime;
-}
-
-public OrderStatus getOrderStatus() {
-    return orderStatus;
-}
-public void setOrderStatus(OrderStatus orderStatus){
-    this.orderStatus = orderStatus;
-}
-
-
