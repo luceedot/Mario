@@ -55,11 +55,22 @@ public class OrderLine {
                     setOrderStatus(OrderStatus.AWAITING_ORDER); // You may need to define this status
                 }
                 break;
+
             case READY:
-                System.out.println("Order is ready for pickup.");
+                if(pizzasToMake.isEmpty()){
+                    setOrderStatus(OrderStatus.READY);
+                    System.out.println("Order is ready for pickup.");
+                } else {
+                    System.out.println("Pizzas are still being made.");
+                }
                 break;
+
             case COLLECTED:
-                System.out.println("Order has been collected.");
+                if(currentOrder.isEmpty()){
+                    setOrderStatus(OrderStatus.COLLECTED);
+                    System.out.println("Order has been collected.");
+                }else
+                    System.out.println("Pizzas are waiting to be collected.");
                 break;
             default:
                 System.out.println("Awaiting an order.");
