@@ -13,15 +13,13 @@ public class OrderLine {
     ArrayList<Pizza> currentOrder = new ArrayList<>(); /** Liste af ordrer som Alfonso har taget imod **/
 
 
-    public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {
-        /** Constructor for Mario's array af pizza som skal laves **/
-
+    public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {  /** Constructor for Mario's array af pizza som skal laves **/
         this.name = name;
         this.pickUpTime = pickUpTime;
         this.orderStatus = orderStatus;
     }
 
-    public currentOrder(String name, LocalDateTime pickUpTime, OrderStatus orderStstus){  /** Constructor for Alsonso's array af ordrer som han har taget imod  **/
+    public currentOrder(String name, LocalDateTime pickUpTime, OrderStatus orderStatus){  /** Constructor for Alsonso's array af ordrer som han har taget imod  **/
         this.name = name;
         this.pickUpTime = pickUpTime;
         this.orderStatus = orderStatus;
