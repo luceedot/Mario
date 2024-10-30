@@ -68,7 +68,7 @@ public class OrderLine {
                 break;
 
             case READY:
-                if(pizzasToMake.isEmpty()){
+                if (pizzasToMake.isEmpty()) {
                     setOrderStatus(OrderStatus.READY);
                     System.out.println("Order is ready for pickup.");
                 } else {
@@ -77,7 +77,7 @@ public class OrderLine {
                 break;
 
             case COLLECTED:
-                if(currentOrder.isEmpty()){
+                if (currentOrder.isEmpty()) {
                     setOrderStatus(OrderStatus.COLLECTED);
                     System.out.println("Order has been collected.");
                 }else
@@ -139,7 +139,7 @@ public void showBestsellers() {
         }
 
         pizzaCount.entrySet().stream()
-                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) /** sorter pizzaer efter antal bestilte**/
+                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) /** sorterer pizzaer efter antal bestilte**/
                 .limit(3) /** få kun top 3**/
                 .forEach(entry -> {
                     System.out.println("De top 3 solgte pizzaer er følgende:");
@@ -161,8 +161,9 @@ public void showBestsellers() {
             case 1:
                 double revenue = calculateRevenue();
                 System.out.println("Omsætning: " + revenue + "kr.");
+                break;
             case 2:
-                orderHistory.showBestsellers();
+                showBestsellers();
                 break;
             default:
                 System.out.println("Ugyldigt valg, prøv igen");
