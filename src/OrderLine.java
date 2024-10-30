@@ -2,6 +2,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class OrderLine {
 
@@ -130,8 +132,19 @@ public double calculateRevenue() {
 }
 
 public void showBestsellers() {
-        Map<String, Integer> pizzaCount = new HashMap<>();
-        for
+        Map<String, Integer> pizzaCount = new HashMap<>(); /** tæller antallet af bestilte pizzaer**/
+
+        for (Pizza pizza : orderHistory) {
+            pizzaCount.put(pizza.getName(), pizzaCount.getOrDefault(pizza.getName(), 0) + 1);
+        }
+
+        pizzaCount.entrySet().stream()
+                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) /** sorter pizzaer efter antal bestilte**/
+                .limit(3) /** få kun top 3**/
+                .forEach(entry -> {
+                    System.out.println("De top 3 solgte pizzaer er følgende:");
+                    System.out.println("Pizza: " + entry.getKey() + " solgt " + entry.getValue() + " gange");
+                });
 }
 
 
@@ -149,7 +162,7 @@ public void showBestsellers() {
                 double revenue = calculateRevenue();
                 System.out.println("Omsætning: " + revenue + "kr.");
             case 2:
-                orderHistory.showBestsellers(); /** lav metode for bestsellers senere **/
+                orderHistory.showBestsellers();
                 break;
             default:
                 System.out.println("Ugyldigt valg, prøv igen");
