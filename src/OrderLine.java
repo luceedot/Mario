@@ -21,14 +21,16 @@ public class OrderLine {
         this.orderStatus = orderStatus;
     }
 
+    /**
     public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {
         this.name = name;
         this.pickUpTime = pickUpTime;
         this.orderStatus = orderStatus;
     }
+**/
 
     public void addPizza(String pizzaName, String pizzaToppings) {
-        Pizza newPizza = new Pizza(pizzaName, pizzaToppings);
+        Pizza newPizza = new Pizza(pizzaName, pizzaToppings); //create pizza with toppings
         pizzasToMake.add(newPizza);
         currentOrder.add(newPizza);
         orderHistory.add(newPizza); /** tilføj Pizza til orderHistory **/
@@ -114,14 +116,6 @@ public class OrderLine {
         this.orderStatus = orderStatus;
     }
 
-/** skal det her slettes?
-    private List<Pizza> orderHistory;
-
-    public OrderLine() {
-        this.currentOrder = new ArrayList<>();
-        this.orderHistory = new ArrayList<>();
-    }
-**/
 
 public double calculateRevenue() {
         double revenue = 0;

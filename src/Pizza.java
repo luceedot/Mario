@@ -1,14 +1,27 @@
 public class Pizza {
+    protected String pizzaName;
     /** Standardtoppings used for all pizzas **/
     protected String pizzaDefaultToppings;
+
 
     public Pizza() {
         this.pizzaDefaultToppings = "Standard toppings";
     }
+public String getName() {
+        return pizzaName;
+}
+public double getPrice() {
+        return 100.0; /** 100 er bare midlertidigplaceholder for pris **/
+
+}
 
     /** Constructor that initializes pizzaDefaultToppings **/
-    public Pizza(String defaultToppings) {
+    public Pizza(String pizzaName, String defaultToppings) {
+        this.pizzaName = pizzaName;
         this.pizzaDefaultToppings = defaultToppings;
+    }
+    public Pizza (String pizzaName) {
+        this.pizzaName = pizzaName;
     }
 }
 

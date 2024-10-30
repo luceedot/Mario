@@ -7,10 +7,13 @@ public class Main {
 
         /**
          opret instans af currentOrder og OrderHistory klasser
+
          CurrentOrder currentOrder = new CurrentOrder("Kunde", LocalDateTime.now());
          OrderHistory orderHistory = new OrderHistory();
-         OrderLine orderLine = new OrderLine();
-         **/
+          **/
+
+         OrderLine orderLine = new OrderLine("kunde", LocalDateTime.now(), OrderStatus.AWAITING_ORDER);
+
 
         boolean running = true;
 
@@ -30,16 +33,18 @@ public class Main {
                     //tilføj pizza
                     System.out.println("Indtast pizza navn");
                     String pizzaName = scanner.nextLine();
+                    /**
                     currentOrder.addPizza(pizzaName);
                     orderHistory.addPizza(currentOrder.getCurrentPizza());
+                    **/
                     break;
                 case 2:
                     //fjern pizza
-                    currentOrder.removePizza();
+                    orderLine.removePizza();
                     break;
                 case 3:
                     //se ordrer
-                    currentOrder.checkOrderStatus();
+                    orderLine.checkOrderStatus();
                     break;
                 case 4:
                     //se statistik, omsætning + bestsellers
