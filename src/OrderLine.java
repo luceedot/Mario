@@ -80,8 +80,9 @@ public class OrderLine {
                 if (currentOrder.isEmpty()) {
                     setOrderStatus(OrderStatus.COLLECTED);
                     System.out.println("Order has been collected.");
-                }else
+                } else {
                     System.out.println("Pizzas are waiting to be collected.");
+                }
                 break;
             default:
                 System.out.println("Awaiting an order.");
@@ -113,14 +114,14 @@ public class OrderLine {
         this.orderStatus = orderStatus;
     }
 
-
+/** skal det her slettes?
     private List<Pizza> orderHistory;
 
     public OrderLine() {
         this.currentOrder = new ArrayList<>();
         this.orderHistory = new ArrayList<>();
     }
-
+**/
 
 public double calculateRevenue() {
         double revenue = 0;
