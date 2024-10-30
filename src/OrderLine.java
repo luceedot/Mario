@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 public class OrderLine {
 
@@ -27,6 +28,7 @@ public class OrderLine {
         Pizza newPizza = new Pizza(pizzaName, pizzaToppings);
         pizzasToMake.add(newPizza);
         currentOrder.add(newPizza);
+        orderHistory.add(newPizza); /** tilføj addPizza til orderhistory **/
         setOrderStatus(OrderStatus.IN_PROGRESS);
     }
 
@@ -107,4 +109,38 @@ public class OrderLine {
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
+
+    //Lucia, task 4
+
+    private List<Pizza> orderHistory;
+
+    public OrderLine() {
+        this.currentOrder = new ArrayList<>();
+        this.orderHistory = new ArrayList<>();
+    }
+
+    public void statisticsMenu() {
+        Scanner scanner = new Scanner (System.in);
+        System.out.println("Hvilken statistik vil du gerne se?");
+        System.out.println("1. Se omsætning");
+        System.out.println("2. Se top 3 mest populære pizzaer");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                double revenue = calculateRevenue(); /** lav metode for calculate revenue senere**/
+    // eller??: double revenue = orderHistory.calculateRevenue();
+                System.out.println("Omsætning: " + revenue + "kr.");
+            case 2:
+                orderHistory.showBestsellers(); /** lav metode for bestsellers senere **/
+                break;
+            default:
+                System.out.println("Ugyldigt valg, prøv igen");
+                break;
+
+        }
+    }
+
 }

@@ -6,8 +6,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         //opret instans af currentOrder og OrderHistory klasser
-        CurrentOrder currentOrder = new CurrentOrder("Kunde", LocalDateTime.now());
-        OrderHistory orderHistory = new OrderHistory();
+       // CurrentOrder currentOrder = new CurrentOrder("Kunde", LocalDateTime.now());
+       // OrderHistory orderHistory = new OrderHistory();
+        OrderLine orderLine = new OrderLine();
 
         boolean running = true;
 
@@ -40,9 +41,8 @@ public class Main {
                     break;
                 case 4:
                     //se statistik, omsætning + bestsellers
-                    double revenue = orderHistory.calculateRevenue();
-                    System.out.println("Omsætning: " + revenue + "kr.");
-                    orderHistory.showBestsellers();
+                    orderLine.statisticsMenu();
+
                     break;
                 case 5:
                     //afslut program
