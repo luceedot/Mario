@@ -1,7 +1,6 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -20,7 +19,6 @@ public class OrderLine {
         this.pickUpTime = pickUpTime;
         this.orderStatus = orderStatus;
     }
-
 
     public void addPizza(String pizzaName, String pizzaToppings) {
         Pizza newPizza = new Pizza(pizzaName, pizzaToppings); //create pizza with toppings
@@ -114,7 +112,7 @@ public double calculateRevenue() {
         double revenue = 0;
         for (Pizza pizza : orderHistory) {
             revenue += pizza.getPrice();
-            // vi mangler en method der hedder getPrice
+
         }
     return revenue;
 }
@@ -159,7 +157,7 @@ public void showBestsellers() {
 
         }
 
-
+        scanner.close();
     }
 
 }

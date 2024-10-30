@@ -5,12 +5,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        /**
-         opret instans af currentOrder og OrderHistory klasser
-
-         CurrentOrder currentOrder = new CurrentOrder("Kunde", LocalDateTime.now());
-         OrderHistory orderHistory = new OrderHistory();
-          **/
 
          OrderLine orderLine = new OrderLine("kunde", LocalDateTime.now(), OrderStatus.AWAITING_ORDER);
 
@@ -33,10 +27,6 @@ public class Main {
                     //tilføj pizza
                     System.out.println("Indtast pizza navn");
                     String pizzaName = scanner.nextLine();
-                    /**
-                    currentOrder.addPizza(pizzaName);
-                    orderHistory.addPizza(currentOrder.getCurrentPizza());
-                    **/
                     break;
                 case 2:
                     //fjern pizza
@@ -49,13 +39,11 @@ public class Main {
                 case 4:
                     //se statistik, omsætning + bestsellers
                     orderLine.statisticsMenu();
-
                     break;
                 case 5:
                     //afslut program
                     running = false;
                     break;
-
                 default:
                     System.out.println("Ugyldigt valg, prøv igen");
                     break;
