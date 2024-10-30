@@ -21,13 +21,6 @@ public class OrderLine {
         this.orderStatus = orderStatus;
     }
 
-    /**
-    public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {
-        this.name = name;
-        this.pickUpTime = pickUpTime;
-        this.orderStatus = orderStatus;
-    }
-**/
 
     public void addPizza(String pizzaName, String pizzaToppings) {
         Pizza newPizza = new Pizza(pizzaName, pizzaToppings); //create pizza with toppings
