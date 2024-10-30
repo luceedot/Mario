@@ -111,7 +111,6 @@ public class OrderLine {
         this.orderStatus = orderStatus;
     }
 
-    //Lucia, task 4
 
     private List<Pizza> orderHistory;
 
@@ -142,6 +141,8 @@ public class OrderLine {
                 break;
 
         }
+
+
     }
 
 }
