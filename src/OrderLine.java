@@ -119,6 +119,22 @@ public class OrderLine {
         this.orderHistory = new ArrayList<>();
     }
 
+
+public double calculateRevenue() {
+        double revenue = 0;
+        for (Pizza pizza : orderHistory) {
+            revenue += pizza.getPrice();
+            // vi mangler en method der hedder getPrice
+        }
+    return revenue;
+}
+
+public void showBestsellers() {
+        Map<String, Integer> pizzaCount = new HashMap<>();
+        for
+}
+
+
     public void statisticsMenu() {
         Scanner scanner = new Scanner (System.in);
         System.out.println("Hvilken statistik vil du gerne se?");
@@ -130,8 +146,7 @@ public class OrderLine {
 
         switch (choice) {
             case 1:
-                double revenue = calculateRevenue(); /** lav metode for calculate revenue senere**/
-    // eller??: double revenue = orderHistory.calculateRevenue();
+                double revenue = calculateRevenue();
                 System.out.println("Omsætning: " + revenue + "kr.");
             case 2:
                 orderHistory.showBestsellers(); /** lav metode for bestsellers senere **/
