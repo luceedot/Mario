@@ -1,8 +1,13 @@
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        //opret instans af currentOrder og OrderHistory klasser
+        CurrentOrder currentOrder = new CurrentOrder("Kundenavn", LocalDateTime.now());
+        OrderHistory orderHistory = new OrderHistory();
 
         boolean running = true;
 
@@ -18,27 +23,26 @@ public class Main {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
-            switch (choice)
-            {
+            switch (choice) {
                 case 1:
                     //tilføj pizza
-                    System.out.println("Indtast pizza navn eller nr");
+                    System.out.println("Indtast pizza navn");
                     String pizzaName = scanner.nextLine();
-                    int pizzaNumber = scanner.nextInt();
-                    currentOrder.addPizza(pizzaName /** or pizza number?**/);
+                    currentOrder.addPizza(pizzaName);
                     orderHistory.addPizza(currentOrder.getCurrentPizza());
                     break;
                 case 2:
                     //fjern pizza
                     currentOrder.removePizza();
+                    break;
                 case 3:
-                    //se ordrestatus
+                    //se ordrer
                     currentOrder.checkOrderStatus();
                     break;
                 case 4:
                     //se omsætning
-                    int revenue = orderHistory.calculateRevenue();
-                    System.out.println("Omsætning: " + revenue);
+                    double revenue = orderHistory.calculateRevenue();
+                    System.out.println("Omsætning: " + revenue + "kr.");
                     break;
                 case 5:
                     //se bestsellers
@@ -55,5 +59,6 @@ public class Main {
 
             }
         }
+        scanner.close();
     }
 }
