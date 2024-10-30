@@ -82,7 +82,7 @@ public class OrderLine {
                     System.out.println("Order has been collected.");
                 } else {
                     System.out.println("Pizzas are waiting to be collected.");
-                }
+                    }
                 break;
             default:
                 System.out.println("Awaiting an order.");

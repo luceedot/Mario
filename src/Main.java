@@ -5,10 +5,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        //opret instans af currentOrder og OrderHistory klasser
-       // CurrentOrder currentOrder = new CurrentOrder("Kunde", LocalDateTime.now());
-       // OrderHistory orderHistory = new OrderHistory();
-        OrderLine orderLine = new OrderLine();
+        /**
+         opret instans af currentOrder og OrderHistory klasser
+         CurrentOrder currentOrder = new CurrentOrder("Kunde", LocalDateTime.now());
+         OrderHistory orderHistory = new OrderHistory();
+         OrderLine orderLine = new OrderLine();
+         **/
 
         boolean running = true;
 
