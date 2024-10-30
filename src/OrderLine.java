@@ -33,7 +33,7 @@ public class OrderLine {
         Pizza newPizza = new Pizza(pizzaName, pizzaToppings); //create pizza with toppings
         pizzasToMake.add(newPizza);
         currentOrder.add(newPizza);
-        orderHistory.add(newPizza); /** tilføj Pizza til orderHistory **/
+        orderHistory.add(newPizza); /** Tilføj Pizza til orderHistory **/
         setOrderStatus(OrderStatus.IN_PROGRESS);
     }
 
@@ -127,7 +127,7 @@ public double calculateRevenue() {
 }
 
 public void showBestsellers() {
-        Map<String, Integer> pizzaCount = new HashMap<>(); /** tæller antallet af bestilte pizzaer**/
+        Map<String, Integer> pizzaCount = new HashMap<>(); /** Tæller antallet af bestilte pizzaer**/
 
         for (Pizza pizza : orderHistory) {
             pizzaCount.put(pizza.getName(), pizzaCount.getOrDefault(pizza.getName(), 0) + 1);
@@ -135,7 +135,7 @@ public void showBestsellers() {
 
         pizzaCount.entrySet().stream()
                 .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) /** sorterer pizzaer efter antal bestilte**/
-                .limit(3) /** få kun top 3**/
+                .limit(3) /** Få kun top 3**/
                 .forEach(entry -> {
                     System.out.println("De top 3 solgte pizzaer er følgende:");
                     System.out.println("Pizza: " + entry.getKey() + " solgt " + entry.getValue() + " gange");

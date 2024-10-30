@@ -11,7 +11,7 @@ public String getName() {
         return pizzaName;
 }
 public double getPrice() {
-        return 100.0; /** 100 er bare midlertidigplaceholder for pris **/
+        return 100.0; /** 100 er bare midlertidig placeholder for pris **/
 
 }
 
