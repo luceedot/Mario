@@ -11,6 +11,7 @@ public class OrderLine {
 
     ArrayList<Pizza> pizzasToMake = new ArrayList<>(); /** List for Mario of pizzas to make **/
     ArrayList<Pizza> currentOrder = new ArrayList<>(); /** List of orders that Alfonso has received **/
+    ArrayList<Pizza> orderHistory = new ArrayList<>(); /** Liste med ordrehistorik **/
 
     public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {
         this.name = name;
@@ -28,7 +29,7 @@ public class OrderLine {
         Pizza newPizza = new Pizza(pizzaName, pizzaToppings);
         pizzasToMake.add(newPizza);
         currentOrder.add(newPizza);
-        orderHistory.add(newPizza); /** tilføj addPizza til orderhistory **/
+        orderHistory.add(newPizza); /** tilføj Pizza til orderHistory **/
         setOrderStatus(OrderStatus.IN_PROGRESS);
     }
 
