@@ -5,13 +5,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+       MenuCard menuCard = new MenuCard();
 
          OrderLine orderLine = new OrderLine("kunde", LocalDateTime.now(), OrderStatus.AWAITING_ORDER);
-
 
         boolean running = true;
 
         while (running) {
+            menuCard.printMenu();
+
             System.out.println("Vælg en handling:");
             System.out.println("1. Tilføj pizza");
             System.out.println("2. Fjern pizza");

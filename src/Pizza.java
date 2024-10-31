@@ -33,7 +33,7 @@ class MenuCard extends Pizza {
 
 
     /** Constructor for MenuCard that receives default toppings and an array of pizzas **/
-    public MenuCard(PizzaItem[] items)
+    public MenuCard(/**PizzaItem[] items**/)
     {
         this.pizzaItems = new PizzaItem[]{
           new PizzaItem(1, "Vesuvio","tomatsauce, ost, skinke og oregano", 57 ),
@@ -94,9 +94,11 @@ class MenuCard extends Pizza {
 
         /** Method to print all the pizzas from the MenuCard **/
         public void printMenu() {
+            System.out.println("Menu:");
             for (PizzaItem pizza : pizzaItems) {
                 System.out.println(pizza);
             }
+            System.out.println("\n");
 
         }
 
