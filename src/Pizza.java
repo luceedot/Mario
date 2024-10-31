@@ -33,30 +33,53 @@ class MenuCard extends Pizza {
 
 
     /** Constructor for MenuCard that receives default toppings and an array of pizzas **/
-    public MenuCard(String defaultToppings, PizzaItem[] items)
+    public MenuCard(PizzaItem[] items)
     {
-        super(defaultToppings);
-        this.pizzaItems = items;
+        this.pizzaItems = new PizzaItem[]{
+          new PizzaItem(1, "Vesuvio","tomatsauce, ost, skinke og oregano", 57 ),
+          new PizzaItem(2, "Amerikaner","tomatsauce, ost, oksefars og oregano", 53),
+          new PizzaItem(3, "Cacciatore","tomatsauce, ost, pepperoni og oregano",57),
+          new PizzaItem(4, "Carbona","tomatsauce, ost, kødsauce, spaghetti, cocktailpølser og oregano",63),
+          new PizzaItem(5, "Dennis","tomatsauce, ost, skinke, pepperoni, cocktailpølser og oregano", 65),
+          new PizzaItem(6, "Bertil","tomatsauce, ost, bacon og oregano", 57),
+          new PizzaItem(7, "Silvia","tomatsauce, ost, pepperoni, rød peber, løg, oliven og oregano", 61),
+          new PizzaItem(8, "Victoria","tomatsauce, ost, skinke, ananas, champignon, løg og oregano", 61),
+          new PizzaItem(9, "Toronfo","tomatsauce, ost, skinke, bacon, kebab, chili og oregano", 61),
+          new PizzaItem(10, "Capricciosa","tomatsauce, ost, skinke, champignon og oregano", 61),
+          new PizzaItem(11, "Hawaii","tomatsauce, ost, skinke, ananas og oregano", 61),
+          new PizzaItem(12, "Le Blissola","tomatsauce, ost, skinke, rejer og oregano", 61),
+          new PizzaItem(13, "Venezia","tomatsauce, ost, skinke, bacon og oregano", 61),
+          new PizzaItem(14, "Mafia","tomatsauce, ost, pepperoni, bacon, løg og oregano", 61),
+
+
+
+
+        };
+
     }
 
     /** Inner class that describes individual pizzas in the menu card **/
     public static class PizzaItem {
 
         /** Attributes **/
-        private String pizzaName;
         private int pizzaNumber;
-        private double pizzaPrice;
+        private String pizzaName;
         private String pizzaToppings;
+        private double pizzaPrice;
+
 
 
         /**
          * Constructor that initializes the name, number, price, and toppings for each pizza
          **/
-        public PizzaItem(String name, int number, double price, String toppings) {
-            this.pizzaName = name;
+        public PizzaItem(int number, String name, String toppings, double price) {
+
             this.pizzaNumber = number;
-            this.pizzaPrice = price;
+            this.pizzaName = name;
             this.pizzaToppings = toppings;
+            this.pizzaPrice = price;
+
+
         }
 
         /**
@@ -65,7 +88,7 @@ class MenuCard extends Pizza {
         @Override
         public String toString() {
             return "Pizza " + pizzaNumber + ": " + pizzaName +
-                    " (" + pizzaToppings + ") - " + pizzaPrice + " DKK";
+                    " (" + pizzaToppings + ") - " + pizzaPrice + " kr.";
         }
     }
 
