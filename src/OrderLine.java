@@ -12,7 +12,7 @@ public class OrderLine {
 
     ArrayList<Pizza> pizzasToMake = new ArrayList<>(); /** List for Mario of pizzas to make **/
     ArrayList<Pizza> currentOrder = new ArrayList<>(); /** List of orders that Alfonso has received **/
-    ArrayList<Pizza> orderHistory = new ArrayList<>(); /** Liste med ordrehistorik **/
+    ArrayList<Pizza> orderHistory = new ArrayList<>(); /** List with order history **/
 
     public OrderLine(String name, LocalDateTime pickUpTime, OrderStatus orderStatus) {
         this.name = name;
@@ -20,12 +20,13 @@ public class OrderLine {
         this.orderStatus = orderStatus;
     }
 
-    public void addPizza(String pizzaName, String pizzaToppings) {
-        Pizza newPizza = new Pizza(pizzaName, pizzaToppings); //create pizza with toppings
+    public void addPizza(String pizzaName) {
+        Pizza newPizza = new Pizza(pizzaName); //create pizza with toppings
         pizzasToMake.add(newPizza);
         currentOrder.add(newPizza);
-        orderHistory.add(newPizza); /** Tilføj Pizza til orderHistory **/
+        orderHistory.add(newPizza); /** Add Pizza to orderHistory **/
         setOrderStatus(OrderStatus.IN_PROGRESS);
+        System.out.println("Added pizza: " + newPizza.getName());
     }
 
     public void removePizza() {
@@ -50,21 +51,27 @@ public class OrderLine {
     }
 
     public void checkOrderStatus() {
+        if(pizzasToMake.isEmpty() && currentOrder.isEmpty())
+        {
+            setOrderStatus(OrderStatus.AWAITING_ORDER);
+            System.out.println("No orders received. Awaiting order. ");
+        }
+
         switch (orderStatus) {
             case IN_PROGRESS:
-                if (!pizzasToMake.isEmpty() && !currentOrder.isEmpty()) {
-                    setOrderStatus(OrderStatus.IN_PROGRESS);
+                if (!pizzasToMake.isEmpty()) {
                     System.out.println("Order is in progress.");
                 } else {
-                    setOrderStatus(OrderStatus.AWAITING_ORDER);
+                    setOrderStatus(OrderStatus.READY);
+                    System.out.println("Order is ready for pickup");
                 }
                 break;
 
             case READY:
                 if (pizzasToMake.isEmpty()) {
-                    setOrderStatus(OrderStatus.READY);
                     System.out.println("Order is ready for pickup.");
                 } else {
+                    setOrderStatus(OrderStatus.IN_PROGRESS);
                     System.out.println("Pizzas are still being made.");
                 }
                 break;
@@ -77,8 +84,9 @@ public class OrderLine {
                     System.out.println("Pizzas are waiting to be collected.");
                     }
                 break;
+
             default:
-                System.out.println("Awaiting an order.");
+                System.out.println("Order status is unclear.");
                 break;
         }
     }
@@ -109,7 +117,11 @@ public class OrderLine {
 
 
 public double calculateRevenue() {
-        double revenue = 0;
+    if (orderHistory.isEmpty()) {
+        System.out.println("No orders in history to calculate revenue.");
+        return 0; // Return 0 revenue if there are no orders
+    }
+    double revenue = 0;
         for (Pizza pizza : orderHistory) {
             revenue += pizza.getPrice();
 
@@ -118,27 +130,32 @@ public double calculateRevenue() {
 }
 
 public void showBestsellers() {
-        Map<String, Integer> pizzaCount = new HashMap<>(); /** Tæller antallet af bestilte pizzaer**/
+
+        if (orderHistory.isEmpty()) {
+        System.out.println("No orders in history to show bestsellers.");
+        return; // Exit if there are no orders
+        }
+        Map<String, Integer> pizzaCount = new HashMap<>(); /** Count number of ordered pizzas**/
 
         for (Pizza pizza : orderHistory) {
             pizzaCount.put(pizza.getName(), pizzaCount.getOrDefault(pizza.getName(), 0) + 1);
         }
 
+        System.out.println("The top 3 best-selling pizzas are the following: ");
         pizzaCount.entrySet().stream()
-                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) /** sorterer pizzaer efter antal bestilte**/
-                .limit(3) /** Få kun top 3**/
+                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) /** sorting pizzas by number sold**/
+                .limit(3) /** Get top 3 **/
                 .forEach(entry -> {
-                    System.out.println("De top 3 solgte pizzaer er følgende:");
-                    System.out.println("Pizza: " + entry.getKey() + " solgt " + entry.getValue() + " gange");
+                    System.out.println("Pizza: " + entry.getKey() + " sold " + entry.getValue() + " times");
                 });
 }
 
 
     public void statisticsMenu() {
         Scanner scanner = new Scanner (System.in);
-        System.out.println("Hvilken statistik vil du gerne se?");
-        System.out.println("1. Se omsætning");
-        System.out.println("2. Se top 3 mest populære pizzaer");
+        System.out.println("Which statistics would you like to check?");
+        System.out.println("1. Check Revenue");
+        System.out.println("2. View top 3 popular pizzas");
 
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -146,18 +163,16 @@ public void showBestsellers() {
         switch (choice) {
             case 1:
                 double revenue = calculateRevenue();
-                System.out.println("Omsætning: " + revenue + "kr.");
+                System.out.println("Revenue: " + revenue + "kr.");
                 break;
             case 2:
                 showBestsellers();
                 break;
             default:
-                System.out.println("Ugyldigt valg, prøv igen");
+                System.out.println("Invalid choice, please try again");
                 break;
 
         }
-
-        scanner.close();
     }
 
 }
