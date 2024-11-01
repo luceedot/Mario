@@ -17,7 +17,7 @@ public class Main {
             System.out.println("Choose an option:");
             System.out.println("1. Add pizza");
             System.out.println("2. Remove pizza");
-            System.out.println("3. Check order");
+            System.out.println("3. Check orders");
             System.out.println("4. View statistics");
             System.out.println("5. Exit");
 
