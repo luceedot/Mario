@@ -94,7 +94,7 @@ class MenuCard extends Pizza {
 
         /** Method to print all the pizzas from the MenuCard **/
         public void printMenu() {
-            System.out.println("Menu:");
+            System.out.println("Menu");
             for (PizzaItem pizza : pizzaItems) {
                 System.out.println(pizza);
             }

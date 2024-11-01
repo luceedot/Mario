@@ -126,7 +126,7 @@ public void showBestsellers() {
 
         pizzaCount.entrySet().stream()
                 .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue())) /** sorterer pizzaer efter antal bestilte**/
-                .limit(3) /** Få kun top 3**/
+                .limit(3) /** begræns til top 3**/
                 .forEach(entry -> {
                     System.out.println("De top 3 solgte pizzaer er følgende:");
                     System.out.println("Pizza: " + entry.getKey() + " solgt " + entry.getValue() + " gange");
